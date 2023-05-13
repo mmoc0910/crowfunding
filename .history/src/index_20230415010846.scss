@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-base font-normal mx-auto max-w-[1440px] bg-lite dark:bg-darkbg;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply block;
+  }
+  input,
+  textarea {
+    @apply outline-none;
+  }
+}
+
+.quill {
+  @apply p-[15px];
+  .ql-toolbar.ql-snow {
+    @apply border-none bg-text4 bg-opacity-[0.08] rounded-[10px] max-w-max mx-auto;
+  }
+}

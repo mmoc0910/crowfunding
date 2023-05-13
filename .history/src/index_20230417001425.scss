@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-base font-normal mx-auto max-w-[1440px] bg-lite dark:bg-darkbg;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply block;
+  }
+  input,
+  textarea {
+    @apply outline-none;
+  }
+}
+
+.quill {
+  .ql-snow .ql-stroke {
+    @apply dark:stroke-white;
+  }
+  .ql-snow .ql-fill {
+    @apply dark:fill-white;
+  }
+  @apply p-[15px] border border-strock dark:border-dark-strock rounded-[10px] w-full bg-inherit;
+  .ql-toolbar.ql-snow {
+    @apply border-none bg-text4 bg-opacity-[0.08] rounded-[10px] max-w-max mx-auto p-3 mb-4 dark:bg-opacity-100 dark:bg-dark-strock;
+    .ql-formats {
+      @apply mr-0;
+    }
+  }
+  .ql-container.ql-snow {
+    @apply border-none p-[10px] w-full;
+  }
+  .ql-editor.ql-blank::before {
+    @apply text-text4 text-sm font-medium not-italic left-[10px] dark:text-text2;
+  }
+  .ql-editor {
+    @apply p-0 dark:text-white min-h-[320px];
+    strong {
+      @apply font-semibold;
+    }
+    img {
+      @apply inline-block;
+      @apply w-full h-auto object-cover;
+    }
+  }
+  .ql-container {
+    @apply font-primary text-sm;
+  }
+}
+
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  .react-date-picker {
+    @apply text-sm font-medium h-[52px] rounded-[10px] border border-solid border-strock dark:border-dark-strock px-[25px] py-[15px];
+  }
+  .react-date-picker__wrapper {
+    @apply border-none items-center;
+  }
+  .react-date-picker__clear-button {
+    @apply hidden;
+  }
+
+  .react-date-picker__button svg {
+    @apply stroke-icon-color;
+  }
+  .react-date-picker__button:enabled:hover .react-date-picker__button__icon,
+  .react-date-picker__button:enabled:focus .react-date-picker__button__icon {
+    @apply stroke-icon-color;
+  }
+  .react-date-picker__button {
+    @apply p-0;
+  }
+  .react-calendar {
+    @apply font-primary rounded-[10px] border-strock p-2;
+  }
+  .react-calendar__navigation button {
+    @apply text-2xl font-medium;
+    &.react-calendar__navigation__label {
+      @apply text-base;
+    }
+  }
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    @apply bg-inherit;
+  }
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    @apply bg-inherit text-primary;
+  }
+  .react-calendar__tile--active {
+    @apply rounded-[5px] bg-primary20;
+  }
+  .react-calendar__tile--now {
+    @apply rounded-[5px] bg-secondary60;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    @apply text-xs capitalize;
+    abbr {
+      @apply decoration-solid;
+    }
+  }
+}

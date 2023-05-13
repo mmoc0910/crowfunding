@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-base leading-normal font-normal mx-auto max-w-[1440px];
+  }
+  a {
+    @apply block;
+  }
+  input {
+    @apply outline-none;
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "manh",
+      "password": "$2b$10$UTmPb9KWgUWcWsnFt7khL.Mt1MkHZwYmALzNXe6I1MsAnCwQknd.S",
+      "email": "manh@gmail.com",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Im1hbmgiLCJpYXQiOjE2ODM5NTY1NzEsImV4cCI6MTY4NDA0Mjk3MX0.SH7MuBn8-x71BHIzyqqRdrAM9DWUjXGGiFRB9W2vF5w"
+    },
+    {
+      "id": 2,
+      "name": "tuyet",
+      "password": "$2b$10$JaCZ/BY3f4X0b0lcwMruG.gkf0gyo2pIM.XLaQO.Rrx8L3fQRy6o2",
+      "email": "tuyet@gmail.com",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6InR1eWV0IiwiaWF0IjoxNjgzODk2MTE1LCJleHAiOjE2ODM5ODI1MTV9.JWU0oGySPrsfXcGdIt0Ivl02hFHBzrlno-RKp0cXMP0"
+    }
+  ],
+  "categories": [],
+  "campaigns": [
+    {
+      "title": "Meet - AI Virtual Background 4K Webcam",
+      "slug": "meet-ai-virtual-background-4k-webcam",
+      "category": "Camera Gear",
+      "short_description": "The first-ever 4K webcam that embeded AI technology to\nprotect your background during video calls.",
+      "goal": "1000",
+      "amount": "10",
+      "prefilled": "2,5,7",
+      "video": "https://www.youtube.com/watch?v=2AfaQ6qsLbw&list=RDHMkOExwuw5E&index=7",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "content": "<p>Capture everything in 4k, with extended battery life and pro-g</p><p>inspired features. Choose from three 4k recording modes: UHD, HD and cinematic 24p. Use the Wi-Fi feature to connect and stream</p><p>your footage wirelessly directly to your iOS and Android smartphones or tablets for instant sharing. The monitor has a 3.5\" touch screen for easy navigation and built-in wifi that automatically connects to the last used smartphone or tablet once paired. </p><p><br></p><p><img src=\"https://i.ibb.co/7WbJkT5/marek-piwnicki-JE4-Abhu-FJII-unsplash.jpg\"></p><p><br></p><p>Capture everything in 4k, with extended battery life and pro-g</p><p>inspired features. Choose from three 4k recording modes: UHD, HD and cinematic 24p. Use the Wi-Fi feature to connect and stream</p><p>your footage wirelessly directly to your iOS and Android smartphones or tablets for instant sharing. The monitor has a 3.5\" touch screen for easy navigation and built-in wifi that automatically connects to the last used smartphone or tablet once paired. </p>",
+      "startDate": "2023-04-17T15:22:17.910Z",
+      "endDate": "2023-04-29T17:00:00.000Z",
+      "images": [
+        "https://images.unsplash.com/photo-1682444944126-9fb22591061e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80",
+        "https://images.unsplash.com/photo-1683491184388-7e8ebb14ac31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
+        "https://images.unsplash.com/photo-1680212558862-137ca19670e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+      ],
+      "id": 2
+    },
+    {
+      "endDate": "Fri Apr 28 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Wed Apr 19 2023 00:32:21 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "33",
+      "goal": "2333333",
+      "short_description": "‘I just smile, cause babe, I already know’ | Lana Del Rey playlist (Released + Unreleased)",
+      "category": "Education",
+      "title": "Lana Del Rey - Ultraviolence 2.3 Unreleased (Full Album)",
+      "slug": "lana-del-rey-ultraviolence-2-3-unreleased-full-album",
+      "prefilled": "",
+      "video": "",
+      "content": "<p><img src=\"https://i.ibb.co/HBLtHZG/anita-austvika-4ts56rc-Uy8o-unsplash.jpg\"></p>",
+      "images": [
+        "https://i.ibb.co/HBLtHZG/anita-austvika-4ts56rc-Uy8o-unsplash.jpg"
+      ],
+      "id": 4
+    },
+    {
+      "endDate": "Sun May 28 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:10:50 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "22",
+      "goal": "1222222",
+      "short_description": "Remake - We Make: an exhibition about architecture's\nsocial agency in the face of urbanisation",
+      "category": "Phone & Accessories",
+      "title": "‘I just smile, cause babe, I already know’ | Lana Del Rey playlist (Released + Unreleased)",
+      "slug": "i-just-smile-cause-babe-i-already-know-lana-del-rey-playlist-released-unreleased",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make: an exhibition about architecture's social agency in the face of urbanisation</p><p><img src=\"https://i.ibb.co/ZMwwNYH/boxed-water-is-better-a-ABFNv-QOh-N0-unsplash.jpg\"></p><p><br></p><p>Remake - We Make: an exhibition about architecture's social agency in the face of urbanisation.</p><p>Goodbye!!!!!!!!!!!!!!!!!</p>",
+      "images": [
+        "https://i.ibb.co/ZMwwNYH/boxed-water-is-better-a-ABFNv-QOh-N0-unsplash.jpg"
+      ],
+      "id": 5
+    },
+    {
+      "endDate": "Wed Apr 19 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:17:13 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Réunion", "image": "https://flagcdn.com/re.svg" },
+      "amount": "22",
+      "goal": "1111",
+      "short_description": "Remake - We Make architecture\nexhibition",
+      "category": "Fashion",
+      "title": "Remake - We Make architecture exhibition",
+      "slug": "remake-we-make-architecture-exhibition",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make architecture exhibitionRemake - We Make architecture</p><p>exhibitionRemake - We Make architecture exhibition</p>",
+      "images": [
+        "https://images.unsplash.com/photo-1683463170464-ed1dd004b92f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80",
+        "https://images.unsplash.com/photo-1683463170490-e6727ad94d09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
+      ],
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "manh",
+      "password": "$2b$10$UTmPb9KWgUWcWsnFt7khL.Mt1MkHZwYmALzNXe6I1MsAnCwQknd.S",
+      "email": "manh@gmail.com",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Im1hbmgiLCJpYXQiOjE2ODM0NzU2ODMsImV4cCI6MTY4MzY0ODQ4M30.bzlPTghl1QiUp226S9vW0w2tSMMT6eD1GYWsP-EI33k"
+    }
+  ],
+  "categories": [],
+  "campaigns": [
+    {
+      "title": "",
+      "category": "",
+      "short_description": "",
+      "goal": "",
+      "amount": "",
+      "prefilled": "",
+      "video": "",
+      "country": "",
+      "content": "<p><img src=\"https://i.ibb.co/7WbJkT5/marek-piwnicki-JE4-Abhu-FJII-unsplash.jpg\"></p>",
+      "startDate": "2023-04-17T15:19:49.170Z",
+      "endDate": "2023-04-17T15:19:49.170Z",
+      "images": [
+        "https://i.ibb.co/7WbJkT5/marek-piwnicki-JE4-Abhu-FJII-unsplash.jpg"
+      ],
+      "id": 1
+    },
+    {
+      "title": "Meet - AI Virtual Background 4K Webcam",
+      "category": "Camera Gear",
+      "short_description": "The first-ever 4K webcam that embeded AI technology to\nprotect your background during video calls.",
+      "goal": "1000",
+      "amount": "10",
+      "prefilled": "2,5,7",
+      "video": "https://www.youtube.com/watch?v=2AfaQ6qsLbw&list=RDHMkOExwuw5E&index=7",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "content": "<p>Capture everything in 4k, with extended battery life and pro-g</p><p>inspired features. Choose from three 4k recording modes: UHD,</p><p>HD and cinematic 24p. Use the Wi-Fi feature to connect and stream</p><p>your footage wirelessly directly to your iOS and Android smartphones</p><p>or tablets for instant sharing. The monitor has a 3.5\" touch screen</p><p>for easy navigation and built-in wifi that automatically connects</p><p>to the last used smartphone or tablet once paired. </p><p><br></p><p><img src=\"https://i.ibb.co/7WbJkT5/marek-piwnicki-JE4-Abhu-FJII-unsplash.jpg\"></p><p><br></p><p>Capture everything in 4k, with extended battery life and pro-g</p><p>inspired features. Choose from three 4k recording modes: UHD,</p><p>HD and cinematic 24p. Use the Wi-Fi feature to connect and stream</p><p>your footage wirelessly directly to your iOS and Android smartphones</p><p>or tablets for instant sharing. The monitor has a 3.5\" touch screen</p><p>for easy navigation and built-in wifi that automatically connects</p><p>to the last used smartphone or tablet once paired. </p><p><br></p><p><img src=\"https://i.ibb.co/ZxvtDwd/martin-bennie-8j-N5k9j-Bjz4-unsplash.jpg\"></p>",
+      "startDate": "2023-04-17T15:22:17.910Z",
+      "endDate": "2023-04-29T17:00:00.000Z",
+      "images": [
+        "https://i.ibb.co/7WbJkT5/marek-piwnicki-JE4-Abhu-FJII-unsplash.jpg",
+        "https://i.ibb.co/ZxvtDwd/martin-bennie-8j-N5k9j-Bjz4-unsplash.jpg"
+      ],
+      "id": 2
+    },
+    {
+      "endDate": "Fri Apr 28 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Mon Apr 17 2023 22:24:27 GMT+0700 (Giờ Đông Dương)",
+      "country": {
+        "name": "United States",
+        "image": "https://flagcdn.com/us.svg"
+      },
+      "amount": "1",
+      "goal": "20000",
+      "short_description": "The first-ever 4K webcam that embeded AI technology to\nprotect your background during video calls.",
+      "category": "Fashion",
+      "title": "Meet - AI Virtual Background 4K Webcam",
+      "prefilled": "2,5,10",
+      "video": "https://www.youtube.com/watch?v=2AfaQ6qsLbw&list=RDHMkOExwuw5E&index=7",
+      "content": "<p><img src=\"https://i.ibb.co/k0dtxXG/robbin-grimm-5a84-H570-GMg-unsplash.jpg\"></p><p><br></p><p>Capture everything in 4k, with extended battery life and pro-g</p><p>inspired features. Choose from three 4k recording modes: UHD,</p><p>HD and cinematic 24p. Use the Wi-Fi feature to connect and stream</p><p>your footage wirelessly directly to your iOS and Android smartphones</p><p>or tablets for instant sharing. The monitor has a 3.5\" touch screen</p><p>for easy navigation and built-in wifi that automatically connects</p><p>to the last used smartphone or tablet once paired. </p><p>Built with an advanced 4K image sensor and a Super 35 imaging</p><p>processer the GH4 is able to capture cinema quality images</p><p>with astonishing detail. This camera has evolved into a great</p><p>all-rounder for photography or filmmaking.</p><p><br></p><p><strong><u>Digital Cameras</u></strong></p><p><br></p><p>Images can be instantly checked, and retaken if necessary.</p><p> 2. Black and White and sepia-tone photos can be easily created.</p><p> 3. Macro photography lets you shoot down to a few centimeters</p><p>     away.</p><p> 4. Most digital cameras can also take moving pictures.</p><p> 5. No film purchase or development costs, Rechargeable battery</p><p>     packs are economical🤑🤑🤑.</p><p> 6. Macro photography lets you shoot down to a few centimeters</p><p>     away.</p>",
+      "images": [],
+      "id": 3
+    },
+    {
+      "endDate": "Fri Apr 28 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Wed Apr 19 2023 00:32:21 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "33",
+      "goal": "2333333",
+      "short_description": "sacvhsdvhsdgvkdsgvukdsvgusd",
+      "category": "Education",
+      "title": "manh0901",
+      "prefilled": "",
+      "video": "",
+      "content": "<p><img src=\"https://i.ibb.co/HBLtHZG/anita-austvika-4ts56rc-Uy8o-unsplash.jpg\"></p>",
+      "images": [
+        "https://i.ibb.co/HBLtHZG/anita-austvika-4ts56rc-Uy8o-unsplash.jpg"
+      ],
+      "id": 4
+    },
+    {
+      "endDate": "Sun May 28 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:10:50 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "22",
+      "goal": "1222222",
+      "short_description": "Remake - We Make: an exhibition about architecture's\nsocial agency in the face of urbanisation",
+      "category": "Phone & Accessories",
+      "title": "Remake - We Make architecture exhibition",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make: an exhibition about architecture's social agency in the face of urbanisation</p><p><img src=\"https://i.ibb.co/ZMwwNYH/boxed-water-is-better-a-ABFNv-QOh-N0-unsplash.jpg\"></p><p><br></p><p>Remake - We Make: an exhibition about architecture's social agency in the face of urbanisation.</p><p>Remake - We Make: an exhibition about architecture's social agency in the face of urbanisation.</p><p>Goodbye!!!!!!!!!!!!!!!!!</p>",
+      "images": [
+        "https://i.ibb.co/ZMwwNYH/boxed-water-is-better-a-ABFNv-QOh-N0-unsplash.jpg"
+      ],
+      "id": 5
+    },
+    {
+      "endDate": "Wed Apr 19 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:17:13 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Réunion", "image": "https://flagcdn.com/re.svg" },
+      "amount": "22",
+      "goal": "1111",
+      "short_description": "Remake - We Make architecture\nexhibition",
+      "category": "Fashion",
+      "title": "Remake - We Make architecture exhibition",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make architecture</p><p>exhibitionRemake - We Make architecture</p><p>exhibitionRemake - We Make architecture</p><p>exhibition</p>",
+      "images": [],
+      "id": 6
+    },
+    {
+      "endDate": "Wed Apr 12 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:18:26 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "11",
+      "goal": "11",
+      "short_description": "Remake - We Make architecture\nexhibition",
+      "category": "Education",
+      "title": "Remake - We Make architecture exhibition",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make architecture</p><p>exhibition</p>",
+      "images": [],
+      "id": 7
+    },
+    {
+      "endDate": "Thu Apr 13 2023 00:00:00 GMT+0700 (Giờ Đông Dương)",
+      "startDate": "Fri Apr 21 2023 21:19:23 GMT+0700 (Giờ Đông Dương)",
+      "country": { "name": "Vietnam", "image": "https://flagcdn.com/vn.svg" },
+      "amount": "22",
+      "goal": "22",
+      "short_description": "Remake - We Make architecture\nexhibition",
+      "category": "Education",
+      "title": "Remake - We Make architecture exhibition",
+      "prefilled": "",
+      "video": "",
+      "content": "<p>Remake - We Make architecture</p><p>exhibitionRemake - We Make architecture</p><p>exhibition</p>",
+      "images": [],
+      "id": 8
+    }
+  ]
+}

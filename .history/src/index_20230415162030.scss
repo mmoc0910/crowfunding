@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-base font-normal mx-auto max-w-[1440px] bg-lite dark:bg-darkbg;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply block;
+  }
+  input,
+  textarea {
+    @apply outline-none;
+  }
+}
+
+.quill {
+  @apply p-[15px] border border-strock dark:border-dark-strock rounded-[10px] w-full;
+  .ql-toolbar.ql-snow {
+    @apply border-none bg-text4 bg-opacity-[0.08] rounded-[10px] max-w-max mx-auto p-3 mb-4;
+    .ql-formats {
+      @apply mr-0;
+    }
+  }
+  .ql-container.ql-snow {
+    @apply border-none p-[10px] w-full;
+  }
+  .ql-editor.ql-blank::before {
+    @apply text-text4 text-sm font-medium not-italic left-[10px] dark:text-text2;
+  }
+  .ql-editor {
+    @apply p-0;
+    strong {
+      @apply font-semibold;
+    }
+    img {
+      @apply inline-block;
+      @apply w-full h-auto object-cover;
+    }
+  }
+  .ql-container {
+    @apply font-primary text-sm;
+  }
+}
