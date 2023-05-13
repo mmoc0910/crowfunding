@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 
 export default axios.create({
-  baseURL: "https://crowfunding-json-server-auth.onrender.com/",
+  baseURL: "https://crowfunding-json-server.onrender.com",
 });
 
 export const axiosPrivate = axios.create({
