@@ -51,16 +51,16 @@ const SignupPage = () => {
     if (user && refreshToken) {
       navigate("/");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const onSubmit = async (data) => {
     if (acceptTerm) {
       try {
         dispatch(register(data));
+        toast.success("Sign Up Success");
         navigate("/sign-in");
       } catch (error) {
-        console.log(error);
+        toast.error("Registration failed");
       }
     } else {
       toast.error("You do not agree to the policy");

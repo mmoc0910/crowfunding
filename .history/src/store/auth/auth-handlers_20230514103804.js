@@ -13,10 +13,8 @@ export function* handlerAuthRegister({ type, payload }) {
   try {
     const response = yield call(requestAuthRegister, payload);
     console.log(response);
-    toast.success("Sign Up Success");
   } catch (error) {
     console.log(error);
-    toast.error("Registration failed");
   }
 }
 

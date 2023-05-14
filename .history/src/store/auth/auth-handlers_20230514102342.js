@@ -13,10 +13,8 @@ export function* handlerAuthRegister({ type, payload }) {
   try {
     const response = yield call(requestAuthRegister, payload);
     console.log(response);
-    toast.success("Sign Up Success");
   } catch (error) {
     console.log(error);
-    toast.error("Registration failed");
   }
 }
 
@@ -31,12 +29,9 @@ export function* handleAuthLogin({ payload }) {
   } catch (error) {
     console.log(error);
     const response = error.response.data;
-    if (response?.statusCode === 403) {
+    console.log(response);
+    if (response.statusCode === 403) {
       toast.error(response.error.message);
-      return;
-    }
-    if (response === "Unauthorized") {
-      toast.error("Account does not exist");
       return;
     }
   }
