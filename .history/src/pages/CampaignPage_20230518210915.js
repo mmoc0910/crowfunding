@@ -9,6 +9,9 @@ import useAxiosPrivate from "hooks/useAxiosPrivate";
 import { v4 as uuidv4 } from "uuid";
 
 const CampaignPage = () => {
+  const renderRef = React.useRef(0);
+  console.log("re-render campaign page");
+  // console.log(rend)
   const axiosPrivate = useAxiosPrivate();
   const [campaigns, setCampaigns] = React.useState([]);
   React.useEffect(() => {
@@ -26,6 +29,7 @@ const CampaignPage = () => {
 
   return (
     <>
+      <div className="">{renderRef.current++}</div>
       <div className="lg:flex pl-4 pr-10 py-5 md:px-10 md:py-8 dark:bg-dark-secondary rounded-[20px]">
         <div className="flex items-start gap-[15px] md:gap-[25px] w-full">
           <Link
@@ -129,4 +133,4 @@ const IconPlus = () => {
     </svg>
   );
 };
-export default CampaignPage;
+export default React.memo(CampaignPage);

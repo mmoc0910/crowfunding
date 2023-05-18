@@ -7,6 +7,7 @@ import React, { memo } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const DashboardPage = () => {
+  console.log("re-render dashboard page");
   const axiosPrivate = useAxiosPrivate();
   const [campaigns, setCampaigns] = React.useState([]);
   const [loading, setLoading] = React.useState(true);

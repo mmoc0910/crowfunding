@@ -18,7 +18,7 @@ const LayoutDashboard = () => {
           <div
             ref={nodeRef}
             className={classNames(
-              "flex md:gap-10 xl:gap-10 w-[200%] md:w-[calc(100%+350px)] xl:right-0 xl:w-full relative  transition-all duration-300",
+              "flex md:gap-10 xl:gap-10 w-[200%] md:w-[calc(100%+350px)] xl:right-0 xl:w-full relative  transition-all duration-300 ease-linear",
               isOpen ? "right-0" : "right-full md:right-[350px]"
             )}
           >

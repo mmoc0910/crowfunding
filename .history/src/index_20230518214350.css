@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply text-base font-normal leading-normal font-primary bg-lite dark:bg-darkbg;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    @apply block;
+  }
+  input,
+  textarea {
+    @apply outline-none;
+  }
+}
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+.menu-transition-enter {
+  /* opacity: 0; */
+  @apply right-full md:right-[350px];
+}
+.menu-transition-enter-active {
+  @apply right-0;
+  transition: right 300ms;
+}
+.menu-transition-exit {
+  @apply right-0;
+  /* opacity: 1; */
+}
+.menu-transition-exit-active {
+  @apply right-full md:right-[350px];
+  /* opacity: 0; */
+  transition: right 300ms;
+}
+.quill {
+  @apply p-[15px] border border-strock dark:border-dark-strock rounded-[10px] w-full bg-inherit;
+}
+
+.quill .ql-snow .ql-stroke {
+  @apply dark:stroke-white;
+}
+
+.quill .ql-snow .ql-fill {
+  @apply dark:fill-white;
+}
+.quill .ql-toolbar.ql-snow {
+  @apply border-none bg-text4 bg-opacity-[0.08] rounded-[10px] max-w-max mx-auto p-3 mb-4 dark:bg-opacity-100 dark:bg-dark-strock;
+}
+.quill .ql-toolbar.ql-snow .ql-formats {
+  @apply mr-0;
+}
+.quill .ql-container.ql-snow {
+  @apply border-none p-[10px] w-full;
+}
+.quill .ql-editor.ql-blank::before {
+  @apply text-text4 text-sm font-medium not-italic left-[10px] dark:text-text2;
+}
+.quill .ql-editor {
+  @apply p-0 dark:text-white min-h-[320px];
+}
+.quill .ql-editor strong {
+  @apply font-semibold;
+}
+.quill .ql-editor img {
+  @apply inline-block;
+  @apply object-cover w-full h-auto;
+}
+.quill .ql-container {
+  @apply text-sm font-primary;
+}
+body .react-date-picker--disabled {
+  @apply bg-inherit text-inherit;
+}
+body .react-date-picker {
+  @apply text-sm font-medium h-[52px] rounded-[10px] border border-solid border-strock dark:border-dark-strock px-[25px] py-[15px];
+}
+body .react-date-picker__wrapper {
+  @apply items-center border-none dark:text-white;
+}
+body .react-date-picker__clear-button {
+  @apply hidden;
+}
+body .react-date-picker__button svg {
+  @apply stroke-icon-color;
+}
+body .react-date-picker__button:enabled:hover .react-date-picker__button__icon,
+body .react-date-picker__button:enabled:focus .react-date-picker__button__icon {
+  @apply stroke-icon-color;
+}
+body .react-date-picker__button {
+  @apply p-0;
+}
+body .react-calendar {
+  @apply font-primary rounded-[10px] border-strock p-2 dark:bg-dark-secondary dark:border-dark-strock dark:text-white;
+}
+body .react-calendar__month-view__days__day--weekend {
+  @apply text-error;
+}
+body .react-calendar__navigation button {
+  @apply text-2xl font-medium;
+}
+body .react-calendar__navigation button.react-calendar__navigation__label {
+  @apply text-base;
+}
+body .react-calendar__navigation button:enabled:hover,
+body .react-calendar__navigation button:enabled:focus {
+  @apply bg-inherit;
+}
+body .react-calendar__tile:enabled:hover,
+body .react-calendar__tile:enabled:focus {
+  @apply bg-inherit text-primary;
+}
+body .react-calendar__tile--active {
+  @apply rounded-[5px] bg-primary20;
+}
+body .react-calendar__tile--now {
+  @apply rounded-[5px] bg-secondary60;
+}
+
+body .react-calendar__month-view__weekdays__weekday {
+  @apply text-xs capitalize;
+}
+body .react-calendar__month-view__weekdays__weekday abbr {
+  @apply decoration-solid;
+}
+
+.campaign-story {
+  @apply text-xs text-text3;
+}
+.campaign-story b {
+  @apply font-semibold text-text2;
+}
+.section {
+  @apply flex max-xl:overflow-x-auto snap-x snap-mandatory xl:snap-none lg:gap-[30px] gap-5 pb-2;
+  -webkit-overflow-scrolling: touch;
+}
+.section-item {
+  @apply snap-start snap-always w-[265px] lg:w-[280px] shrink-0;
+}
+.translate-top-bar-50 {
+  transform: translate3d(calc((50% - 11px) * (-1)), 0, 0);
+}
+body .campaign-thumps {
+  @apply hidden w-full lg:block;
+}
+body .campaign-thumps .swiper-wrapper {
+  @apply mx-auto max-w-max;
+}
+.translate-top-bar-50 {
+  transform: translate3d(calc((50% - 11px) * (-1)), 0, 0);
+}
+body .campaign-thumps {
+  @apply hidden w-full lg:block;
+}
+body .campaign-thumps .swiper-wrapper {
+  @apply mx-auto max-w-max;
+}
+.campaign-view-image.swiper {
+  @apply overflow-x-hidden overflow-y-auto;
+}
+.campaign-view-image.swiper .swiper-pagination {
+  @apply static py-2 lg:hidden;
+}
+.campaign-view-image.swiper .swiper-pagination .swiper-pagination-bullet {
+  @apply mx-[3px] bg-text4;
+}
+.campaign-view-image.swiper
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
+  @apply bg-text3;
+}
+.campaign-view-image.swiper {
+  @apply overflow-x-hidden overflow-y-auto;
+}
+.campaign-view-image.swiper .swiper-pagination {
+  @apply static py-2 lg:hidden;
+}
+.campaign-view-image.swiper .swiper-pagination .swiper-pagination-bullet {
+  @apply mx-[3px] bg-text4;
+}
+
+.campaign-view-image.swiper
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
+  @apply bg-text3;
+}
+.Toastify__toast-body {
+  @apply font-primary;
+}
+.table-history thead {
+  @apply bg-[#F7F7F8] dark:bg-[#22222B];
+}
+
+.table-history thead tr th {
+  @apply text-xs font-semibold text-text1 md:text-sm dark:text-white;
+}
+.table-history tr th,
+.table-history tr td {
+  @apply px-[30px] py-[15px] text-start;
+}

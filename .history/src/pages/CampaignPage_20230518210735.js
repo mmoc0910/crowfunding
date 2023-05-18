@@ -9,6 +9,7 @@ import useAxiosPrivate from "hooks/useAxiosPrivate";
 import { v4 as uuidv4 } from "uuid";
 
 const CampaignPage = () => {
+  console.log("re-render campaign page");
   const axiosPrivate = useAxiosPrivate();
   const [campaigns, setCampaigns] = React.useState([]);
   React.useEffect(() => {
@@ -129,4 +130,4 @@ const IconPlus = () => {
     </svg>
   );
 };
-export default CampaignPage;
+export default React.memo(CampaignPage);

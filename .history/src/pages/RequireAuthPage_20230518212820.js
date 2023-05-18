@@ -17,4 +17,4 @@ const RequireAuthPage = ({ children }) => {
   return <>{children}</>;
 };
 
-export default React.memo(RequireAuthPage);
+export default RequireAuthPage;

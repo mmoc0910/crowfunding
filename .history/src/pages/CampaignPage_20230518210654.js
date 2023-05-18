@@ -129,4 +129,4 @@ const IconPlus = () => {
     </svg>
   );
 };
-export default CampaignPage;
+export default React.memo(CampaignPage);

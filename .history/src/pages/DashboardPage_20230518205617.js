@@ -3,10 +3,11 @@ import CampaignGrid from "campaign/CampaignGrid";
 import CampaignItem from "campaign/CampaignItem";
 import Heading from "components/common/Heading";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
-import React, { memo } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const DashboardPage = () => {
+const DashboardPage = React.memo(() => {
+  console.log("re-render dashboard page");
   const axiosPrivate = useAxiosPrivate();
   const [campaigns, setCampaigns] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -60,6 +61,6 @@ const DashboardPage = () => {
       </div>
     </>
   );
-};
+});
 
-export default memo(DashboardPage);
+export default DashboardPage;

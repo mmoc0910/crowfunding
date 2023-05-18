@@ -5,6 +5,7 @@ import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import classNames from "utils/classNames";
+import { CSSTransition } from "react-transition-group";
 
 const LayoutDashboard = () => {
   const { isOpen } = useSelector((state) => state.menu);
@@ -15,18 +16,24 @@ const LayoutDashboard = () => {
         <div className="w-full">
           <Overlay></Overlay>
           <DashboardTopbar></DashboardTopbar>
-          <div
-            ref={nodeRef}
-            className={classNames(
-              "flex md:gap-10 xl:gap-10 w-[200%] md:w-[calc(100%+350px)] xl:right-0 xl:w-full relative  transition-all duration-300",
-              isOpen ? "right-0" : "right-full md:right-[350px]"
-            )}
+          <CSSTransition
+            nodeRef={nodeRef}
+            in={isOpen}
+            timeout={300}
+            classNames="my-node"
           >
-            <DashboardSidebar></DashboardSidebar>
-            <div className="space-y-[30px] lg:space-y-[40px] w-1/2 md:flex-1">
-              <Outlet></Outlet>
+            <div
+              className={classNames(
+                "flex md:gap-10 xl:gap-10 w-[200%] md:w-[calc(100%+350px)] xl:right-0 xl:w-full relative transition-all duration-300 ease-linear",
+                isOpen ? "right-0" : "right-full md:right-[350px]"
+              )}
+            >
+              <DashboardSidebar></DashboardSidebar>
+              <div className="space-y-[30px] lg:space-y-[40px] w-1/2 md:flex-1">
+                <Outlet></Outlet>
+              </div>
             </div>
-          </div>
+          </CSSTransition>
         </div>
       </div>
     </div>
