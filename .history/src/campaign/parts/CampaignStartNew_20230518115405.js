@@ -6,7 +6,7 @@ import { Label } from "components/label";
 import { useForm } from "react-hook-form";
 import ImageUploader from "quill-image-uploader";
 import ReactQuill, { Quill } from "react-quill";
-import React, { useMemo, useState } from "react";
+import React from "react";
 import "react-quill/dist/quill.snow.css";
 import { Button } from "components/button";
 import useOnchange from "hooks/useOnchange";
@@ -15,18 +15,48 @@ import { v4 } from "uuid";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
-// Quill.register("modules/imageUploader", ImageUploader);
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { imgbbAPI, urlApi } from "config/config";
+import { useNavigate } from "react-router-dom";
+import IconCalendar from "icons/IconCalendar";
+import slugify from "slugify";
+import { toast } from "react-toastify";
+import { axiosPrivate } from "api/axios";
 
+Quill.register("modules/imageUploader", ImageUploader);
+const schema = yup
+  .object({
+    title: yup.string().required("This field is required"),
+    category: yup.string().required("This field is required"),
+    short_description: yup.string().required("This field is required"),
+    goal: yup.string().required("This field is required"),
+    amount: yup.string().required("This field is required"),
+    country: yup
+      .object({
+        name: yup.string().required("This field is required"),
+        image: yup.string().required("This field is required"),
+      })
+      .required("This field is required"),
+    startDate: yup.string().required("This field is required"),
+    endDate: yup.string().required("This field is required"),
+  })
+  .required();
+const categories = [
+  "Film",
+  "Education",
+  "Phone & Accessories",
+  "Fashion",
+  "Camera Gear",
+  "Real Estate",
+  "Home",
+];
 const CampaignStartNew = () => {
-  const [content, setContent] = React.useState("");
-  const modules = useMemo(
+  const navigate = useNavigate();
+  const modules = React.useMemo(
     () => ({
       toolbar: [
-        ["italic", "bold", "underline", "strike"],
-        // ["blockquote"],
-        // [{ header: 1 }, { header: 2 }], // custom button values
-        // [{ list: "ordered" }, { list: "bullet" }],
-        // [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["italic", "bold", "underline"],
         ["link", "image"],
         [
           { align: "" },
@@ -35,36 +65,55 @@ const CampaignStartNew = () => {
           { align: "justify" },
         ],
       ],
-      // imageUploader: {
-      //   // upload: async (file) => {
-      //   //   const bodyFormData = new FormData();
-      //   //   bodyFormData.append("image", file);
-      //   //   const response = await axios({
-      //   //     method: "post",
-      //   //     url: imgbbAPI,
-      //   //     data: bodyFormData,
-      //   //     headers: {
-      //   //       "Content-Type": "multipart/form-data",
-      //   //     },
-      //   //   });
-      //   //   return response.data.data.url;
-      //   // },
-      // },
+      imageUploader: {
+        upload: async (file) => {
+          try {
+            const bodyFormData = new FormData();
+            bodyFormData.append("image", file);
+            const response = await axios({
+              method: "post",
+              url: imgbbAPI,
+              data: bodyFormData,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            });
+            return response.data.data.url;
+          } catch (error) {
+            console.log(error);
+          }
+        },
+      },
     }),
     []
   );
-  // const [startDate, onChangeStartDate] = useState(new Date());
-  const { control, setValue, watch, handleSubmit } = useForm({
+  const {
+    control,
+    setValue,
+    watch,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      country: "",
+      title: "",
+      category: "",
+      short_description: "",
+      goal: "",
+      amount: "",
+      prefilled: "",
+      video: "",
+      country: {
+        name: "",
+        image: "",
+      },
+      content: "",
       startDate: new Date(),
       endDate: new Date(),
-      endMethod: "",
-      category: "",
     },
+    resolver: yupResolver(schema),
   });
   const watchAllFields = watch();
-  const [category, setCategory] = React.useState("");
   const [fillterCountry, setFillterCountry] = useOnchange();
   const [countries, setCountries] = React.useState([]);
   React.useEffect(() => {
@@ -74,7 +123,6 @@ const CampaignStartNew = () => {
           const response = await axios.get(
             `https://restcountries.com/v3.1/name/${fillterCountry}`
           );
-          console.log(response.data);
           setCountries(response.data);
         } catch (error) {
           console.log(error);
@@ -83,23 +131,64 @@ const CampaignStartNew = () => {
     };
     getCountry();
   }, [fillterCountry]);
-  const onSubmit = (value) => {
-    console.log(value);
+  const onSubmit = async (value) => {
+    let campaignImg = [];
+    const image = document.querySelectorAll(".ql-editor img");
+    [...image].forEach((img) => {
+      campaignImg.push(img.getAttribute("src"));
+    });
+    console.log({ ...value, images: campaignImg });
+    try {
+      await axiosPrivate.post(`api/campaigns`, {
+        ...value,
+        slug: slugify(value.title),
+        images: campaignImg,
+      });
+      reset({
+        title: "",
+        category: "",
+        short_description: "",
+        goal: "",
+        amount: "",
+        prefilled: "",
+        video: "",
+        country: {
+          name: "",
+          image: "",
+        },
+        content: "",
+        startDate: new Date(),
+        endDate: new Date(),
+      });
+      toast.success("Create campaign successfully");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <form
-      className="py-10 pr-16 pl-28 dark:bg-dark-secondary rounded-[10px]"
+      className="pt-[25px] px-5 pb-20 md:px-10 md:py-10 xl:py-10 xl:pr-16 xl:pl-28 dark:bg-dark-secondary rounded-[15px] xl:rounded-[10px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <button className="text-text2 font-bold text-[25px] flex items-center gap-[10px] bg-text4 bg-opacity-[0.08] py-4 px-[60px] rounded-[10px] mx-auto mb-[50px] dark:bg-dark-strock dark:text-white">
-        Start a Campaign <img src="/Rectangle.svg" alt="Rectangle.svg" />
+      <button
+        type="button"
+        className="text-text2 font-bold lg:text-[25px] flex items-center gap-[10px] bg-text4 bg-opacity-[0.08] px-6 py-3 lg:py-4 lg:px-[60px] rounded-[10px] mx-auto mb-5 lg:mb-[50px] dark:bg-dark-strock dark:text-white"
+      >
+        Start a Campaign{" "}
+        <img
+          src="/Rectangle.svg"
+          alt="Rectangle.svg"
+          className="w-[18px] h-[18px] lg:w-[18px] lg:h-[18px] object-cover"
+        />
       </button>
-      <div className="space-y-[35px]">
+      <div className="space-y-[15px] lg:space-y-[35px]">
         <FormRow>
           <FormGroup>
             <Label>Campaign Title *</Label>
             <Input
-              name="email"
+              error={errors?.title?.message}
+              name="title"
               placeholder={"Write a titel"}
               control={control}
             ></Input>
@@ -113,6 +202,10 @@ const CampaignStartNew = () => {
                     <span className="text-black dark:text-white">
                       {watchAllFields.category}
                     </span>
+                  ) : errors?.category?.message ? (
+                    <span className="text-error">
+                      {errors?.category?.message}
+                    </span>
                   ) : (
                     <span className="text-text4 dark:text-text2">
                       Select a category
@@ -121,17 +214,15 @@ const CampaignStartNew = () => {
                 }
               ></Dropdown.Select>
               <Dropdown.List>
-                <Dropdown.Option
-                  onClick={() => setCategory("Podcust, Blogs & Vlogs")}
-                >
-                  Podcust, Blogs & Vlogs
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => setCategory("Tablet Games")}>
-                  Tablet Games
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => setCategory("Video Games")}>
-                  Video Games
-                </Dropdown.Option>
+                {categories.length > 0 &&
+                  categories.map((category) => (
+                    <Dropdown.Option
+                      key={v4()}
+                      onClick={() => setValue("category", category)}
+                    >
+                      <span className="capitalize">{category}</span>
+                    </Dropdown.Option>
+                  ))}
               </Dropdown.List>
             </Dropdown>
           </FormGroup>
@@ -139,7 +230,8 @@ const CampaignStartNew = () => {
         <FormGroup>
           <Label>Short Description *</Label>
           <Textarea
-            name="email"
+            error={errors?.short_description?.message}
+            name="short_description"
             placeholder={"Write a short description...."}
             control={control}
           ></Textarea>
@@ -150,13 +242,13 @@ const CampaignStartNew = () => {
             placeholder="Write your story......"
             modules={modules}
             theme="snow"
-            value={content}
-            onChange={setContent}
+            value={watchAllFields.content}
+            onChange={(value) => setValue("content", value)}
           />
         </FormGroup>
-        <div className="flex items-center gap-6 px-[50px] py-10 bg-secondary20 rounded-[10px] text-white cursor-pointer !my-10">
+        <div className="flex items-center gap-[10px] lg:gap-6 px-5 py-5 lg:px-[50px] lg:py-10 bg-secondary20 rounded-[10px] text-white cursor-pointer my-[25px] lg:my-10">
           <Icon />
-          <p className="font-bold text-[25px]">
+          <p className="font-bold text-xs lg:text-[25px]">
             You will get 90% of total raised
           </p>
         </div>
@@ -164,7 +256,8 @@ const CampaignStartNew = () => {
           <FormGroup>
             <Label>Goal *</Label>
             <Input
-              name="email"
+              error={errors?.goal?.message}
+              name="goal"
               placeholder={"$0.00 USD"}
               control={control}
             ></Input>
@@ -172,7 +265,8 @@ const CampaignStartNew = () => {
           <FormGroup>
             <Label>Raised Amount *</Label>
             <Input
-              name="email"
+              error={errors?.amount?.message}
+              name="amount"
               placeholder={"$0.00 USD"}
               control={control}
             ></Input>
@@ -180,21 +274,21 @@ const CampaignStartNew = () => {
         </FormRow>
         <FormRow>
           <FormGroup>
-            <Label>Raised Amount *</Label>
+            <Label>Amount Prefilled *</Label>
             <Input
-              name="email"
+              name="prefilled"
               placeholder={"Amount Prefilled"}
               control={control}
             ></Input>
-            <p className="mt-1 text-sm text-text3">
+            <p className="mt-1 text-xs lg:text-sm text-text3">
               It will help fill amount box by click, place each amount by comma,
               ex: 10,20,30,40
             </p>
           </FormGroup>
           <FormGroup>
             <Label>Video</Label>
-            <Input name="email" placeholder={"Video"} control={control}></Input>
-            <p className="mt-1 text-sm text-text3">
+            <Input name="video" placeholder={"Video"} control={control}></Input>
+            <p className="mt-1 text-xs lg:text-sm text-text3">
               Place Youtube or Vimeo Video URL
             </p>
           </FormGroup>
@@ -229,16 +323,20 @@ const CampaignStartNew = () => {
               <Dropdown.Select
                 placeholder={
                   watchAllFields.country.name ? (
-                    <div className="flex items-center gap-5 text-black dark:text-white">
+                    <div className="flex items-center gap-3 text-black lg:gap-5 dark:text-white">
                       <img
                         src={watchAllFields.country.image}
                         alt={watchAllFields.country.name}
-                        className="w-[26px] h-[18px] object-cover"
+                        className="w-[26px] h-[18px] object-cover rounded-[2px]"
                       />
-                      <span className="-translate-y-[2px]">
+                      <span className="translate-y-[1px] line-clamp-1">
                         {watchAllFields.country.name}
                       </span>
                     </div>
+                  ) : errors?.country?.message ? (
+                    <span className="text-error">
+                      {errors?.country?.message}
+                    </span>
                   ) : (
                     <span className="text-text4 dark:text-text2">
                       Select a country
@@ -263,7 +361,16 @@ const CampaignStartNew = () => {
                         })
                       }
                     >
-                      {country.name.common}
+                      <div className="flex items-center gap-3 lg:gap-5">
+                        <img
+                          src={country.flags.svg}
+                          alt={country.flags.svg}
+                          className="w-[26px] h-[18px] object-cover rounded-[2px]"
+                        />
+                        <span className="translate-y-[1px]">
+                          {country.name.common}
+                        </span>
+                      </div>
                     </Dropdown.Option>
                   ))}
               </Dropdown.List>
@@ -277,6 +384,7 @@ const CampaignStartNew = () => {
               onChange={(value) => setValue("startDate", value)}
               value={watchAllFields.startDate}
               format="dd/MM/yyyy"
+              calendarIcon={<IconCalendar />}
             />
           </FormGroup>
           <FormGroup>
@@ -284,6 +392,7 @@ const CampaignStartNew = () => {
             <DatePicker
               onChange={(value) => setValue("endDate", value)}
               value={watchAllFields.endDate}
+              calendarIcon={<IconCalendar />}
             />
           </FormGroup>
         </FormRow>
@@ -301,6 +410,7 @@ const CampaignStartNew = () => {
 const Icon = () => {
   return (
     <svg
+      className="w-5 h-auto lg:w-10"
       width={40}
       height={40}
       viewBox="0 0 40 40"

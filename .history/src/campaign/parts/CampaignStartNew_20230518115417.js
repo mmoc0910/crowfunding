@@ -17,8 +17,12 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { imgbbAPI, urlApi } from "config/config";
+import { imgbbAPI } from "config/config";
+import { useNavigate } from "react-router-dom";
+import IconCalendar from "icons/IconCalendar";
+import slugify from "slugify";
 import { toast } from "react-toastify";
+import { axiosPrivate } from "api/axios";
 
 Quill.register("modules/imageUploader", ImageUploader);
 const schema = yup
@@ -48,6 +52,7 @@ const categories = [
   "Home",
 ];
 const CampaignStartNew = () => {
+  const navigate = useNavigate();
   const modules = React.useMemo(
     () => ({
       toolbar: [
@@ -98,14 +103,16 @@ const CampaignStartNew = () => {
       amount: "",
       prefilled: "",
       video: "",
-      country: "",
+      country: {
+        name: "",
+        image: "",
+      },
       content: "",
       startDate: new Date(),
       endDate: new Date(),
     },
     resolver: yupResolver(schema),
   });
-  console.log(errors);
   const watchAllFields = watch();
   const [fillterCountry, setFillterCountry] = useOnchange();
   const [countries, setCountries] = React.useState([]);
@@ -132,11 +139,11 @@ const CampaignStartNew = () => {
     });
     console.log({ ...value, images: campaignImg });
     try {
-      await axios.post(`${urlApi}/campaigns`, {
+      await axiosPrivate.post(`api/campaigns`, {
         ...value,
+        slug: slugify(value.title),
         images: campaignImg,
       });
-      console.log("ok");
       reset({
         title: "",
         category: "",
@@ -153,19 +160,29 @@ const CampaignStartNew = () => {
         startDate: new Date(),
         endDate: new Date(),
       });
+      toast.success("Create campaign successfully");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <form
-      className="py-10 pr-16 pl-28 dark:bg-dark-secondary rounded-[10px]"
+      className="pt-[25px] px-5 pb-20 md:px-10 md:py-10 xl:py-10 xl:pr-16 xl:pl-28 dark:bg-dark-secondary rounded-[15px] xl:rounded-[10px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <button className="text-text2 font-bold text-[25px] flex items-center gap-[10px] bg-text4 bg-opacity-[0.08] py-4 px-[60px] rounded-[10px] mx-auto mb-[50px] dark:bg-dark-strock dark:text-white">
-        Start a Campaign <img src="/Rectangle.svg" alt="Rectangle.svg" />
+      <button
+        type="button"
+        className="text-text2 font-bold lg:text-[25px] flex items-center gap-[10px] bg-text4 bg-opacity-[0.08] px-6 py-3 lg:py-4 lg:px-[60px] rounded-[10px] mx-auto mb-5 lg:mb-[50px] dark:bg-dark-strock dark:text-white"
+      >
+        Start a Campaign{" "}
+        <img
+          src="/Rectangle.svg"
+          alt="Rectangle.svg"
+          className="w-[18px] h-[18px] lg:w-[18px] lg:h-[18px] object-cover"
+        />
       </button>
-      <div className="space-y-[35px]">
+      <div className="space-y-[15px] lg:space-y-[35px]">
         <FormRow>
           <FormGroup>
             <Label>Campaign Title *</Label>
@@ -229,9 +246,9 @@ const CampaignStartNew = () => {
             onChange={(value) => setValue("content", value)}
           />
         </FormGroup>
-        <div className="flex items-center gap-6 px-[50px] py-10 bg-secondary20 rounded-[10px] text-white cursor-pointer !my-10">
+        <div className="flex items-center gap-[10px] lg:gap-6 px-5 py-5 lg:px-[50px] lg:py-10 bg-secondary20 rounded-[10px] text-white cursor-pointer my-[25px] lg:my-10">
           <Icon />
-          <p className="font-bold text-[25px]">
+          <p className="font-bold text-xs lg:text-[25px]">
             You will get 90% of total raised
           </p>
         </div>
@@ -263,7 +280,7 @@ const CampaignStartNew = () => {
               placeholder={"Amount Prefilled"}
               control={control}
             ></Input>
-            <p className="mt-1 text-sm text-text3">
+            <p className="mt-1 text-xs lg:text-sm text-text3">
               It will help fill amount box by click, place each amount by comma,
               ex: 10,20,30,40
             </p>
@@ -271,7 +288,7 @@ const CampaignStartNew = () => {
           <FormGroup>
             <Label>Video</Label>
             <Input name="video" placeholder={"Video"} control={control}></Input>
-            <p className="mt-1 text-sm text-text3">
+            <p className="mt-1 text-xs lg:text-sm text-text3">
               Place Youtube or Vimeo Video URL
             </p>
           </FormGroup>
@@ -306,7 +323,7 @@ const CampaignStartNew = () => {
               <Dropdown.Select
                 placeholder={
                   watchAllFields.country.name ? (
-                    <div className="flex items-center gap-5 text-black dark:text-white">
+                    <div className="flex items-center gap-3 text-black lg:gap-5 dark:text-white">
                       <img
                         src={watchAllFields.country.image}
                         alt={watchAllFields.country.name}
@@ -344,7 +361,7 @@ const CampaignStartNew = () => {
                         })
                       }
                     >
-                      <div className="flex items-center gap-5">
+                      <div className="flex items-center gap-3 lg:gap-5">
                         <img
                           src={country.flags.svg}
                           alt={country.flags.svg}
@@ -367,6 +384,7 @@ const CampaignStartNew = () => {
               onChange={(value) => setValue("startDate", value)}
               value={watchAllFields.startDate}
               format="dd/MM/yyyy"
+              calendarIcon={<IconCalendar />}
             />
           </FormGroup>
           <FormGroup>
@@ -374,6 +392,7 @@ const CampaignStartNew = () => {
             <DatePicker
               onChange={(value) => setValue("endDate", value)}
               value={watchAllFields.endDate}
+              calendarIcon={<IconCalendar />}
             />
           </FormGroup>
         </FormRow>
@@ -391,6 +410,7 @@ const CampaignStartNew = () => {
 const Icon = () => {
   return (
     <svg
+      className="w-5 h-auto lg:w-10"
       width={40}
       height={40}
       viewBox="0 0 40 40"

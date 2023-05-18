@@ -17,11 +17,12 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { imgbbAPI, urlApi } from "config/config";
+import { imgbbAPI } from "config/config";
 import { useNavigate } from "react-router-dom";
 import IconCalendar from "icons/IconCalendar";
 import slugify from "slugify";
 import { toast } from "react-toastify";
+import { axiosPrivate } from "api/axios";
 
 Quill.register("modules/imageUploader", ImageUploader);
 const schema = yup
@@ -138,7 +139,7 @@ const CampaignStartNew = () => {
     });
     console.log({ ...value, images: campaignImg });
     try {
-      await axios.post(`${urlApi}/campaigns`, {
+      await axiosPrivate.post(`api/campaigns`, {
         ...value,
         slug: slugify(value.title),
         images: campaignImg,
