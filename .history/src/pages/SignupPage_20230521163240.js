@@ -33,6 +33,7 @@ const schema = yup
 const SignupPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const { value: acceptTerm, handleToogleValue: handleToogleTerm } =
     useToogleValue();
   const { value: tooglePassword, handleToogleValue: handleTooglePassword } =
@@ -54,9 +55,11 @@ const SignupPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+  console.log(loading);
   const onSubmit = async (data) => {
     if (acceptTerm) {
       try {
+        setLoading(true);
         dispatch(register(data));
         navigate("/sign-in");
       } catch (error) {

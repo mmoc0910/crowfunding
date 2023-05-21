@@ -33,6 +33,7 @@ const schema = yup
 const SignupPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const { value: acceptTerm, handleToogleValue: handleToogleTerm } =
     useToogleValue();
   const { value: tooglePassword, handleToogleValue: handleTooglePassword } =
@@ -54,9 +55,11 @@ const SignupPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+  console.log(loading);
   const onSubmit = async (data) => {
     if (acceptTerm) {
       try {
+        setLoading(true);
         dispatch(register(data));
         navigate("/sign-in");
       } catch (error) {
@@ -69,6 +72,11 @@ const SignupPage = () => {
   if (user) return null;
   return (
     <LayoutAuthentication heading="Sign Up">
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center w-screen h-screen bg-black bg-opacity-10">
+          <div className="w-10 h-10 border-4 rounded-full border-primary border-b-transparent animate-spin"></div>
+        </div>
+      )}
       <p className="mb-[25px] md:mb-[30px] text-xs font-normal text-center md:text-sm md:font-medium text-text3">
         Already have an account?{" "}
         <Link

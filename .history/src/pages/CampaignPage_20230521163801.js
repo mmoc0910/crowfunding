@@ -40,7 +40,10 @@ const CampaignPage = () => {
       <div className="lg:flex pl-4 pr-10 py-5 md:px-10 md:py-8 dark:bg-dark-secondary rounded-[20px]">
         <div className="flex items-start gap-[15px] md:gap-[25px] w-full">
           <Link
-            to={toStartCampaign}
+            // to={usePermissionLink({
+            //   permission: permissions.campaigns.CREATE_CAMPAIGN,
+            //   href: "/campaign/start-campaign",
+            // })}
             className="flex items-center justify-center bg-secondary40 rounded-full w-10 h-10 md:w-[54px] md:h-[54px] shrink-0"
           >
             <IconPlus />
@@ -60,7 +63,10 @@ const CampaignPage = () => {
             </div>
             <Button
               className="text-secondary bg-[#EEEAFD] px-[19px] dark:text-white dark:bg-[#352A65] max-w-max"
-              href={toStartCampaign}
+              // href={usePermissionLink({
+              //   permission: permissions.campaigns.CREATE_CAMPAIGN,
+              //   href: "/campaign/start-campaign",
+              // })}
             >
               Create campaign
             </Button>
