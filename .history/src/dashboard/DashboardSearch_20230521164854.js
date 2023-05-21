@@ -60,7 +60,7 @@ const DashboardSearch = () => {
       </div>
       <div
         className={classNames(
-          "w-[calc(100vw-52px)] md:w-[calc(70vw)] absolute -translate-x-[calc(50%-9px)] lg:translate-x-0 left-1/2 lg:left-0 top-full mt-5 bg-white rounded-[20px] lg:w-[700px] xl:w-[820px] dark:bg-dark-secondary",
+          "w-[calc(100vw-50px)] md:w-[calc(70vw)] absolute -translate-x-[calc(50%-10px)] lg:translate-x-0 left-1/2 lg:left-0 top-full mt-5 bg-white rounded-[20px] lg:w-[700px] xl:w-[820px] dark:bg-dark-secondary",
           isFocus ? "" : "hidden"
         )}
       >
